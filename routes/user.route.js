@@ -64,7 +64,7 @@ userRouter.delete("/delete/:id", auth, async (req, res) => {
     const index = user.addedProducts.indexOf(id);
     if (index > -1) user.addedProducts.splice(index, 1);
 
-    await product.user.save();
+    await user.save();
     await product.remove();
 
     res.status(200).json({
