@@ -62,7 +62,7 @@ userRouter.delete("/delete/:id", auth, async (req, res) => {
     const user = await User.findById(product.user);
 
     const index = user.addedProducts.indexOf(id);
-    if (index > -1) product.user.addedProducts.splice(index, 1);
+    if (index > -1) user.addedProducts.splice(index, 1);
 
     await product.user.save();
     await product.remove();
