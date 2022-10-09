@@ -59,7 +59,9 @@ userRouter.delete("/delete/:id", auth, async (req, res) => {
         message: "Product not found",
       });
 
-    const index = product.user.addedProducts.indexOf(id);
+    const user = await User.findById(product.user);
+
+    const index = user.addedProducts.indexOf(id);
     if (index > -1) product.user.addedProducts.splice(index, 1);
 
     await product.user.save();
